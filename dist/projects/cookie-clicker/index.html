@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<!--all of our html will be contained within this-->
+<html lang="en">
+    <!--this is how we load our javascript file and css file upon loading the webpage-->
+    <head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UB ACM Cookie Clicker</title>
+        <script type="text/javascript" src="cookie.js"></script>
+        <!--Insert title here-->
+        <link rel = "stylesheet" href = "style.css"/>
+        <link rel="icon" type="image/png" href="imgs/cookie.png" sizes="32x32">
+    </head>
+
+    <!--this is how we add all of the elements to the webpage-->
+    <body>
+
+        <!--this is where our logo will be contained within-->
+        <div id="logo">
+            <!-- insert image and link it to UB ACM -->
+
+        </div>
+
+        <!--this is where the cookie game elements will be contained within-->
+        <div id="cookie-game">
+
+            <!--this is our header-->
+            <div id="header">UB ACM's Cookie Clicker!</div>
+
+            <!--this is our cookie and js clicker function-->
+            <!-- Add onclick function here -->
+            <button id="cookie" type="button" onclick="cookieClick()" aria-label="Bake a cookie">
+                <img src="imgs/cookie.png" width="200" alt="Cookie">
+            </button>
+
+            <!--this is our cookie count-->
+            <p>Number of Cookies</p>
+            <div id="numbers" aria-live="polite">0</div>
+
+            <!--this is our level display-->
+            <p>Level</p>
+            <div id="upgradeLevel">1 · 1 cookie per click</div>
+
+            <!--this is our instructions section-->
+            <div id="instructions">
+                Click the cookie or focus it and press Enter. Keep baking to unlock faster upgrades.
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
+

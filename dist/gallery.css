@@ -244,3 +244,15 @@ footer{gap:16px}.depth-reading{min-width:0}#floor-name{overflow-wrap:anywhere;li
 }
 .gallery-floor .collection-heading{pointer-events:auto}
 .gallery-floor .collection-heading .exhibit-label{opacity:var(--content-reveal,1)}
+
+/* Independent links remain outside the card's details button. */
+.portfolio-card{display:flex;flex-direction:column}
+.portfolio-card-open{height:auto;flex:1}
+.portfolio-card-actions{display:flex;flex-wrap:wrap;gap:8px;padding:0 24px 20px;position:relative;z-index:2}
+.portfolio-card-actions a{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;padding:9px 13px;border:1px solid #8bb6ce55;border-radius:4px;color:#dbeef8;font-size:11px;line-height:1.5;text-decoration:none;background:#102331;overflow-wrap:anywhere}
+.portfolio-card-actions a:hover{background:#1a3548;border-color:#a8dbf5}
+.portfolio-card-actions a:focus-visible{outline:2px solid #c8eaff;outline-offset:3px}
+dialog .portfolio-card-actions{padding:8px 0 20px}
+@media(max-width:600px){.portfolio-card-actions{padding-inline:20px}}
+
+.repository-directory{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:20px}.repository-directory section{min-width:0;border-top:1px solid #86b6d040;padding-top:14px}.repository-directory h3{font-size:14px;overflow-wrap:anywhere;line-height:1.5;font-weight:400}.repository-directory .portfolio-card-actions{padding-bottom:0}.portfolio-row-foot button{min-height:44px;font-size:9px}

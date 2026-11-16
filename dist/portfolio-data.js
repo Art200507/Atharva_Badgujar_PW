@@ -38,7 +38,8 @@ window.PORTFOLIO = {
         "Implemented and verified a seven-qubit QCNN observable supported by 33 scientific tests and independent circuit comparisons.",
         "Built a 537-document retrieval system with 72,622 indexed chunks to systematically survey the quantum-ML literature."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/Quantum-Research"
     },
     "tailr": {
       "id": "tailr",
@@ -62,7 +63,8 @@ window.PORTFOLIO = {
         "Student-focused social and networking platform.",
         "Includes profiles, friend recommendations, and notifications."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/Proximity"
     },
     "shadowdevice": {
       "id": "shadowdevice",
@@ -74,7 +76,8 @@ window.PORTFOLIO = {
         "Includes authenticated manifests and incremental uploads.",
         "Supports local or HTTP reads."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/MobileVM"
     },
     "verbatim": {
       "id": "verbatim",
@@ -86,7 +89,8 @@ window.PORTFOLIO = {
         "Speaker diarization with pyannote.audio and transcription with faster-whisper.",
         "Uses embeddings, SQLite storage, and daily digests."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/Recording"
     },
     "podcast": {
       "id": "podcast",
@@ -98,7 +102,8 @@ window.PORTFOLIO = {
         "Includes a management dashboard.",
         "Uses Groq/Gemini for generation and Podbean for publishing."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/latency-report-pipeline"
     },
     "veridica": {
       "id": "veridica",
@@ -110,7 +115,8 @@ window.PORTFOLIO = {
         "Saved analysis history and caching.",
         "Rate limiting and input validation."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/FakeNews"
     },
     "crius07": {
       "id": "crius07",
@@ -122,7 +128,10 @@ window.PORTFOLIO = {
         "Uses Gemini to answer contextual questions step by step.",
         "Built for Chrome and Edge."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/Crius07",
+      "liveUrl": "https://atharvabadgujar.vercel.app/projects/crius07/",
+      "liveLabel": "Project site"
     },
     "middleman-project": {
       "id": "middleman-project",
@@ -134,7 +143,8 @@ window.PORTFOLIO = {
         "Payment processing through Stripe.",
         "Authentication, transaction tracking, and fraud detection."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/themiddleman"
     },
     "schema-project": {
       "id": "schema-project",
@@ -147,7 +157,8 @@ window.PORTFOLIO = {
         "Dynamic rule-building and schema validation for datasets up to 5 GB.",
         "Adopted across multiple active UB research pipelines."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/SchemaMorph"
     },
     "insightlens": {
       "id": "insightlens",
@@ -159,7 +170,8 @@ window.PORTFOLIO = {
         "Predictive modeling with scikit-learn and PyTorch.",
         "Interactive business dashboards built with Plotly."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/InsightLens"
     },
     "mindmirror-project": {
       "id": "mindmirror-project",
@@ -171,7 +183,10 @@ window.PORTFOLIO = {
         "MorphCast SDK for facial analysis.",
         "Spotify API for mood-based music recommendations."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/MindMirror",
+      "liveUrl": "https://atharvabadgujar.vercel.app/projects/mindmirror/",
+      "liveLabel": "App preview"
     },
     "interchat": {
       "id": "interchat",
@@ -182,7 +197,10 @@ window.PORTFOLIO = {
         "Chrome extension for contextual follow-up questions about Claude AI responses.",
         "Supports an inline question-and-answer interaction."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/Claude-Interchat",
+      "liveUrl": "https://claude-interchat.vercel.app",
+      "liveLabel": "Project site"
     },
     "wn4ss-role": {
       "id": "wn4ss-role",
@@ -324,7 +342,8 @@ window.PORTFOLIO = {
         "Uses a collection of medical reference material to provide context for responses.",
         "Designed with accessibility and the cost barriers to support in mind."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/AD"
     },
     "bonvoyage": {
       "id": "bonvoyage",
@@ -335,7 +354,8 @@ window.PORTFOLIO = {
         "AI-powered travel planner.",
         "Helps users explore and organize trip plans."
       ],
-      "dates": null
+      "dates": null,
+      "github": "https://github.com/Art200507/BonVoyage"
     }
   },
   "rows": {
@@ -397,5 +417,154 @@ window.PORTFOLIO = {
         "integrity"
       ]
     }
-  }
+  },
+  "repositories": [
+    {
+      "title": "UBACM-Hacknight1",
+      "github": "https://github.com/Art200507/UBACM-Hacknight1",
+      "private": false,
+      "liveUrl": "https://atharvabadgujar.vercel.app/projects/cookie-clicker/",
+      "liveLabel": "Play"
+    },
+    {
+      "title": "faculty-analysis",
+      "github": "https://github.com/Art200507/faculty-analysis",
+      "private": true
+    },
+    {
+      "title": "BonVoyage",
+      "github": "https://github.com/Art200507/BonVoyage",
+      "private": false
+    },
+    {
+      "title": "themiddleman",
+      "github": "https://github.com/Art200507/themiddleman",
+      "private": false
+    },
+    {
+      "title": "Crius07",
+      "github": "https://github.com/Art200507/Crius07",
+      "private": false,
+      "liveUrl": "https://atharvabadgujar.vercel.app/projects/crius07/",
+      "liveLabel": "Project site"
+    },
+    {
+      "title": "Faculty-Analysis-Code",
+      "github": "https://github.com/Art200507/Faculty-Analysis-Code",
+      "private": true
+    },
+    {
+      "title": "InsightLens",
+      "github": "https://github.com/Art200507/InsightLens",
+      "private": false
+    },
+    {
+      "title": "SchemaMorph",
+      "github": "https://github.com/Art200507/SchemaMorph",
+      "private": false
+    },
+    {
+      "title": "MindMirror",
+      "github": "https://github.com/Art200507/MindMirror",
+      "private": false,
+      "liveUrl": "https://atharvabadgujar.vercel.app/projects/mindmirror/",
+      "liveLabel": "App preview"
+    },
+    {
+      "title": "mindmirrorai",
+      "github": "https://github.com/Art200507/mindmirrorai",
+      "private": false
+    },
+    {
+      "title": "PersonalWebsite",
+      "github": "https://github.com/Art200507/PersonalWebsite",
+      "private": false,
+      "liveUrl": "https://personal-website-alpha-gray-70.vercel.app",
+      "liveLabel": "Previous portfolio"
+    },
+    {
+      "title": "Valentine",
+      "github": "https://github.com/Art200507/Valentine",
+      "private": true
+    },
+    {
+      "title": "Cohort",
+      "github": "https://github.com/Art200507/Cohort",
+      "private": true
+    },
+    {
+      "title": "Cohort-Personal",
+      "github": "https://github.com/Art200507/Cohort-Personal",
+      "private": true
+    },
+    {
+      "title": "FakeNews",
+      "github": "https://github.com/Art200507/FakeNews",
+      "private": false
+    },
+    {
+      "title": "Claude-Interchat",
+      "github": "https://github.com/Art200507/Claude-Interchat",
+      "private": false,
+      "liveUrl": "https://claude-interchat.vercel.app",
+      "liveLabel": "Project site"
+    },
+    {
+      "title": "cicd-practical",
+      "github": "https://github.com/Art200507/cicd-practical",
+      "private": false
+    },
+    {
+      "title": "the-latency-podcast",
+      "github": "https://github.com/Art200507/the-latency-podcast",
+      "private": false
+    },
+    {
+      "title": "AD",
+      "github": "https://github.com/Art200507/AD",
+      "private": false
+    },
+    {
+      "title": "latency-report-pipeline",
+      "github": "https://github.com/Art200507/latency-report-pipeline",
+      "private": false
+    },
+    {
+      "title": "Cohort-final",
+      "github": "https://github.com/Art200507/Cohort-final",
+      "private": true
+    },
+    {
+      "title": "AI-Assistant",
+      "github": "https://github.com/Art200507/AI-Assistant",
+      "private": false
+    },
+    {
+      "title": "MobileVM",
+      "github": "https://github.com/Art200507/MobileVM",
+      "private": false
+    },
+    {
+      "title": "Quantum-Research",
+      "github": "https://github.com/Art200507/Quantum-Research",
+      "private": false
+    },
+    {
+      "title": "Recording",
+      "github": "https://github.com/Art200507/Recording",
+      "private": false
+    },
+    {
+      "title": "Proximity",
+      "github": "https://github.com/Art200507/Proximity",
+      "private": false
+    },
+    {
+      "title": "Atharva_Badgujar_PW",
+      "github": "https://github.com/Art200507/Atharva_Badgujar_PW",
+      "private": false,
+      "liveUrl": "https://atharvabadgujar.vercel.app",
+      "liveLabel": "Portfolio"
+    }
+  ]
 };

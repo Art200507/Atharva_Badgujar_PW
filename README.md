@@ -31,3 +31,7 @@ The downloadable PDF is a draft based on the supplied portfolio entries; educati
 ## Verification
 
 Navigation, carousel loops, keyboard controls, dialog behavior, geometry, and adaptive quality have passed automated simulations. The résumé PDF has been rendered and visually checked. Browser layout, GPU rendering, and real-device frame rates have not been verified in the authoring environment. See `DESIGN_REVIEW.md` for details.
+
+## Linked project deployments
+
+Project cards support separate `github`, `liveUrl`, and `liveLabel` fields. The Personal Projects floor includes a repository directory. See [PROJECT_DEPLOYMENTS.md](PROJECT_DEPLOYMENTS.md) for published previews, exact remaining service setup, and verification limits.
