@@ -191,7 +191,7 @@ function frame(time){
 if(depth!==paintedDepth||floor!==paintedFloor||heroReady!==paintedReady||reduced!==paintedReduced){
  const floorChanged=floor!==paintedFloor;paintedDepth=depth;paintedFloor=floor;paintedReady=heroReady;paintedReduced=reduced;
  const artOpacity=entranceState(depth).gallery;
- document.documentElement.style.setProperty('--chamber-opacity',String(.65*(1-cinematicEase(clamp(depth/.32)))+(innerWidth<601?.09:.12)*cinematicEase(clamp((depth-.75)/.25))));
+ document.documentElement.style.setProperty('--chamber-opacity',String((innerWidth<601?.09:.12)*cinematicEase(clamp((depth-.34)/.36))));
  frameUI.world.style.opacity=view?(heroReady?1:1-artOpacity):0;frameUI.backdrop.style.opacity=artOpacity;frameUI.atmosphere.style.opacity=artOpacity;frameUI.atmosphere.hidden=artOpacity<=0;
  frameUI.chamber.style.transform=`translate3d(0,${reduced?0:Math.sin(depth*Math.PI)*20}px,0) scale(${1.02+(reduced?0:Math.sin(depth*Math.PI)*.035)})`;
  frameUI.progress.style.transform=`scaleX(${depth/LAST_FLOOR})`;frameUI.caption.style.opacity=floor>0&&floor<LAST_FLOOR?opacity:0;
@@ -508,4 +508,4 @@ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();document.body.
 view.update(progressState(smoothProgress),motionTime,0);heroReady=true;document.body.classList.add('hero-ready');
 if(renderer.compileAsync&&renderer.extensions?.has('KHR_parallel_shader_compile')&&window.requestIdleCallback)window.requestIdleCallback(()=>{renderer.compileAsync(scene,camera).catch(()=>{});});
 }
-init3D().catch(err=>{console.warn('3D unavailable; using the lightweight visual fallback.',err);document.body.classList.add('no-webgl');});
+init3D().catch(err=>{console.warn('3D unavailable; retaining the empty gallery background.',err);document.body.classList.add('no-webgl');});

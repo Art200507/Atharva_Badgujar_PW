@@ -88,7 +88,7 @@ body:not([data-floor="0"]) .grain{opacity:.033}
 @media(prefers-reduced-motion:reduce){.gallery-floor .floor-collection{will-change:auto}}
 
 /* The photographic surface gives way to the physical interior on the same clock. */
-#gallery #chamber-art{opacity:var(--chamber-opacity,.65)!important}
+#gallery #chamber-art{opacity:var(--chamber-opacity,0)!important}
 
 /* Promote only the cards near the viewport, instead of every repeated copy. */
 .gallery-floor .portfolio-card{will-change:auto}
