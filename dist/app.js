@@ -155,6 +155,19 @@ function passageEase(t){if(t<.2){const x=t/.2;return .25*(x*x*x-.5*x*x*x*x);}if(
 function entranceState(depth){return {gallery:1-cinematicEase(clamp((depth-.02)/.32)),shaft:cinematicEase(clamp((depth-.34)/.36))};}
 function progressState(p){const base=Math.min(LAST_FLOOR-1,Math.floor(p)),frac=p-base;return p>=LAST_FLOOR?LAST_FLOOR:base+passageEase(clamp((frac-.28)/.72));}
 const floorElements=$$('.floor');
+// Read chrome bounds only on layout changes, never on the animation loop.
+function measureContentBounds(){
+ const top=Math.ceil($('header').getBoundingClientRect().bottom+20);
+ const bottom=Math.ceil(innerHeight-$('footer').getBoundingClientRect().top+20);
+ document.documentElement.style.setProperty('--content-top',top+'px');
+ document.documentElement.style.setProperty('--content-bottom',bottom+'px');
+}
+if(typeof ResizeObserver!=='undefined'){
+ const chromeObserver=new ResizeObserver(measureContentBounds);
+ chromeObserver.observe($('header'));chromeObserver.observe($('footer'));
+}
+window.addEventListener('resize',measureContentBounds);
+requestAnimationFrame(measureContentBounds);
 const frameUI={world:$('#world'),backdrop:$('#hero-backdrop'),atmosphere:$('#hero-atmosphere'),chamber:$('#chamber-art'),progress:$('.journey-progress i'),caption:$('#chamber-caption'),captionName:$('#chamber-caption b'),veil:$('#descent-veil'),nav:$$('#depth-nav button'),depth:$('#depth-number'),line:$('#transition-line')};
 let paintedDepth=NaN,paintedFloor=-1,paintedReady=false,paintedReduced=false,lastRevealDepth=NaN,lastRevealFloor=-1,lastRevealReduced=false,lastReveal=1;
 function revealFloor(depth,floor){

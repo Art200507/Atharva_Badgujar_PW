@@ -204,3 +204,43 @@ dialog h2,.portfolio-detail-meta{overflow-wrap:anywhere}
 /* Room fixtures visibly brighten and dim, independent of the sculpture. */
 .hero-wall-lights{inset:0;background:radial-gradient(ellipse 1.8% 30% at 12% 48%,#c5e6ff99,transparent 78%),radial-gradient(ellipse 1.3% 24% at 20% 50%,#c5e6ff66,transparent 78%),radial-gradient(ellipse 1.8% 32% at 88% 47%,#c5e6ff99,transparent 78%),radial-gradient(ellipse 1.2% 25% at 78% 50%,#c5e6ff66,transparent 78%);animation:gallery-fixture-breathe 3.2s ease-in-out infinite;animation-delay:-.8s}
 @keyframes gallery-fixture-breathe{0%,100%{opacity:.08}50%{opacity:.9}}
+
+/* Content sets its own height; each floor scrolls inside the fixed site chrome. */
+:root{--content-top:112px;--content-bottom:88px}
+.floor.gallery-floor{top:var(--content-top)!important;bottom:var(--content-bottom)!important;grid-template-rows:minmax(min-content,1fr) max-content max-content;row-gap:22px;scroll-padding-block:12px;padding:4px 8px 12px 0!important}
+.gallery-floor .collection-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,.45fr);column-gap:28px;min-height:min-content;align-items:center;padding:0}
+.gallery-floor .collection-heading>div{min-width:0}
+.floor.gallery-floor h2{max-width:100%;overflow-wrap:anywhere;line-height:1.08}
+.gallery-floor .chapter-label{flex-wrap:wrap;row-gap:8px;line-height:1.6;overflow-wrap:anywhere}
+.gallery-floor .floor-intro{margin-bottom:0;max-width:100%;overflow-wrap:anywhere}
+.gallery-floor .collection-heading .exhibit-label{position:static;justify-self:end;align-self:center;max-width:100%;overflow-wrap:anywhere;line-height:1.7}
+.gallery-floor .portfolio-row-head{flex-wrap:wrap;gap:12px 18px;align-items:center}
+.gallery-floor .portfolio-row-head>div:first-child{flex:1 1 220px;min-width:0}
+.gallery-floor .portfolio-row-head h3{max-width:100%;line-height:1.6;overflow-wrap:anywhere}
+.gallery-floor .portfolio-controls{flex:0 0 auto;margin-left:auto}
+.gallery-floor .portfolio-card-open{padding:22px 24px;min-width:0}
+.gallery-floor .portfolio-card-open>*{flex-shrink:0;max-width:100%}
+.gallery-floor .card-art{position:static;align-self:flex-end;width:64px;height:36px;margin:0 0 12px}
+.gallery-floor .portfolio-card-title,.gallery-floor .portfolio-card-description,.gallery-floor .portfolio-card-meta,.gallery-floor .portfolio-card-dates{overflow-wrap:anywhere;white-space:normal;max-width:100%}
+.gallery-floor .portfolio-card-title{line-height:1.3}
+.gallery-floor .portfolio-card-description{line-height:1.75}
+.gallery-floor .floor-next{min-height:40px;align-self:start}
+.floor[data-floor="6"],.floor[data-floor="7"]{top:var(--content-top);bottom:var(--content-bottom);max-height:none;transform:none;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;justify-content:safe center;padding:4px 12px 12px 0;scroll-padding-block:12px}
+.floor[data-floor="6"]>*,.floor[data-floor="7"]>*{flex-shrink:0;overflow-wrap:anywhere}
+.floor[data-floor="6"][hidden],.floor[data-floor="7"][hidden]{display:none}
+header{gap:16px;flex-wrap:wrap}header .identity{min-width:0}.header-right{margin-left:auto}
+footer{gap:16px}.depth-reading{min-width:0}#floor-name{overflow-wrap:anywhere;line-height:1.5}.footer-right{flex-shrink:0}
+.dialog-head{display:flex;align-items:center;gap:18px}.dialog-head .eyebrow{min-width:0;overflow-wrap:anywhere;line-height:1.6}#close-dialog{flex-shrink:0}
+@media(max-width:900px){.gallery-floor .collection-heading{grid-template-columns:minmax(0,1fr)}.gallery-floor .collection-heading .exhibit-label{display:none}}
+@media(max-width:600px){
+ :root{--content-top:96px;--content-bottom:82px}
+ .floor.gallery-floor{row-gap:22px;grid-template-rows:minmax(min-content,1fr) max-content max-content}
+ .gallery-floor .portfolio-card-open{padding:18px 20px}
+ .gallery-floor .card-art{height:30px;width:56px;margin-bottom:12px}
+ .gallery-floor .chapter-label{gap:8px 12px;max-width:100%}
+ .gallery-floor .portfolio-row-head h3{font-size:9px}
+ .floor[data-floor="6"],.floor[data-floor="7"]{width:82vw;max-width:82vw!important}
+ .depth-reading{flex-wrap:wrap;gap:4px 8px;max-width:68%}#floor-name{flex:1 1 100%;max-width:none;font-size:7px}.depth-reading .footer-line{display:none}
+}
+.gallery-floor .collection-heading{pointer-events:auto}
+.gallery-floor .collection-heading .exhibit-label{opacity:var(--content-reveal,1)}
