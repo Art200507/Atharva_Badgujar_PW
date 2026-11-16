@@ -87,7 +87,11 @@ function advanceJourney(target,dt){
  if(Math.sign(step)===Math.sign(error)&&Math.abs(step)>=Math.abs(error)){smoothProgress=target;scrollVelocity=0;}
  else smoothProgress=clamp(smoothProgress+step,0,LAST_FLOOR);
 }
-let heroTitleElapsed=0,atmosphereRunning=false;
+let heroTitleElapsed=0,atmosphereRunning=false,ambientMotionRunning=false;
+function setAmbientMotion(running){
+ if(running===ambientMotionRunning)return;
+ ambientMotionRunning=running;document.body.classList.toggle('ambient-motion-active',running);
+}
 function setAtmosphereMotion(running){
  if(running===atmosphereRunning)return;
  atmosphereRunning=running;document.body.classList.toggle('hero-atmosphere-active',running);
@@ -101,7 +105,7 @@ function updateHeroTitles(dt){
  else if(cycle){const previous=(cycle-1)%4,p=cinematicEase(clamp(phase/.65));offset=previous+p;if(offset===4)offset=0;}
  $('.title-strip').style.transform=`translate3d(${-offset*100}%,0,0)`;
 }
-document.addEventListener('visibilitychange',()=>{lastTime=0;if(document.hidden){navigation=null;setAtmosphereMotion(false);}});
+document.addEventListener('visibilitychange',()=>{lastTime=0;if(document.hidden){navigation=null;setAtmosphereMotion(false);setAmbientMotion(false);}});
 
 function setMotion(){if(reduced){navigation=null;scrollVelocity=0;heroTitleElapsed=Math.floor(heroTitleElapsed/3)*3+.65;}document.body.classList.toggle('reduced',reduced);$('#motion-toggle').setAttribute('aria-pressed',String(reduced));$('#motion-toggle span').textContent=reduced?'OFF':'ON';}
 setMotion();
@@ -178,6 +182,7 @@ function frame(time){
  if(navigation&&!modalOpen){window.scrollTo({top:floorScroll(smoothProgress),behavior:'instant'});if(Math.abs(smoothProgress-navigation.to)<.0001){smoothProgress=navigation.to;targetProgress=navigation.to;navigation=null;}}
  const depth=reduced?Math.round(target):progressState(smoothProgress);
  setAtmosphereMotion(depth<.34&&!modalOpen&&!reduced);
+ setAmbientMotion(!modalOpen&&!reduced);
  const base=Math.min(Math.floor(depth),LAST_FLOOR-1),phase=depth>=LAST_FLOOR?1:depth-base;
  const floor=reduced?Math.round(depth):clamp(base+(phase>=.55?1:0),0,LAST_FLOOR);
  const difference=Math.abs(depth-Math.round(depth));
