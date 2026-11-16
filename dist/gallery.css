@@ -61,10 +61,10 @@ body:not([data-floor="0"]) .grain{opacity:.033}
 @media(max-width:600px) and (max-height:740px){.floor.gallery-floor{grid-template-rows:160px auto 24px}.floor.gallery-floor h2{font-size:34px!important}.gallery-floor .chapter-label{margin-bottom:11px}.gallery-floor .floor-intro{margin-top:10px;font-size:8px}.gallery-floor .portfolio-card-description{font-size:10.5px}.gallery-floor .portfolio-card-title{font-size:17px}.gallery-floor .portfolio-card-open{padding-top:34px}.floor-watermark{font-size:140px}}
 /* Wheel gestures continue into the next floor after a short viewport's content. */
 .floor.gallery-floor{overscroll-behavior-y:auto!important}
-/* Real vessel geometry replaces the old image-warp layer only after initialization. */
-#hero-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;display:none;pointer-events:none}
-.hero-ready #hero-backdrop{display:block}
-.hero-ready #vessel-art{display:none!important}
+/* Show the empty gallery immediately; reveal only the current rendered sculpture. */
+#hero-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;display:block;pointer-events:none}
+#world{opacity:0;transition:opacity .45s ease}
+.reduced #world{transition:none}
 .hero-titles{left:6.7%;top:73%;pointer-events:none;max-width:32vw}
 .title-prefix{font-size:6px;letter-spacing:1.8px;color:#7897aa;display:block;margin-bottom:10px}
 .title-window{width:320px;max-width:32vw;overflow:hidden;height:27px;mask-image:linear-gradient(90deg,#000 94%,transparent)}

@@ -147,7 +147,7 @@ function passageEase(t){if(t<.2){const x=t/.2;return .25*(x*x*x-.5*x*x*x*x);}if(
 function entranceState(depth){return {gallery:1-cinematicEase(clamp((depth-.02)/.32)),shaft:cinematicEase(clamp((depth-.34)/.36))};}
 function progressState(p){const base=Math.min(LAST_FLOOR-1,Math.floor(p)),frac=p-base;return p>=LAST_FLOOR?LAST_FLOOR:base+passageEase(clamp((frac-.28)/.72));}
 const floorElements=$$('.floor');
-const frameUI={vessel:$('#vessel-art'),world:$('#world'),backdrop:$('#hero-backdrop'),chamber:$('#chamber-art'),progress:$('.journey-progress i'),caption:$('#chamber-caption'),captionName:$('#chamber-caption b'),veil:$('#descent-veil'),nav:$$('#depth-nav button'),depth:$('#depth-number'),line:$('#transition-line')};
+const frameUI={world:$('#world'),backdrop:$('#hero-backdrop'),chamber:$('#chamber-art'),progress:$('.journey-progress i'),caption:$('#chamber-caption'),captionName:$('#chamber-caption b'),veil:$('#descent-veil'),nav:$$('#depth-nav button'),depth:$('#depth-number'),line:$('#transition-line')};
 let paintedDepth=NaN,paintedFloor=-1,paintedReady=false,paintedReduced=false,lastRevealDepth=NaN,lastRevealFloor=-1,lastRevealReduced=false,lastReveal=1;
 function revealFloor(depth,floor){
  if(depth===lastRevealDepth&&floor===lastRevealFloor&&reduced===lastRevealReduced)return lastReveal;
@@ -182,14 +182,14 @@ if(depth!==paintedDepth||floor!==paintedFloor||heroReady!==paintedReady||reduced
  const floorChanged=floor!==paintedFloor;paintedDepth=depth;paintedFloor=floor;paintedReady=heroReady;paintedReduced=reduced;
  const artOpacity=entranceState(depth).gallery;
  document.documentElement.style.setProperty('--chamber-opacity',String(.65*(1-cinematicEase(clamp(depth/.32)))+(innerWidth<601?.09:.12)*cinematicEase(clamp((depth-.75)/.25))));
- frameUI.vessel.style.opacity=artOpacity;frameUI.world.style.opacity=view?(heroReady?1:1-artOpacity):0;frameUI.backdrop.style.opacity=artOpacity;
+ frameUI.world.style.opacity=view?(heroReady?1:1-artOpacity):0;frameUI.backdrop.style.opacity=artOpacity;
  frameUI.chamber.style.transform=`translate3d(0,${reduced?0:Math.sin(depth*Math.PI)*20}px,0) scale(${1.02+(reduced?0:Math.sin(depth*Math.PI)*.035)})`;
  frameUI.progress.style.transform=`scaleX(${depth/LAST_FLOOR})`;frameUI.caption.style.opacity=floor>0&&floor<LAST_FLOOR?opacity:0;
  frameUI.veil.style.opacity=reduced?'0':String(Math.pow(Math.sin(phase*Math.PI),4)*.12);
  const meters=String(Math.round(depth*12)).padStart(3,'0');if(frameUI.depth.textContent!==meters)frameUI.depth.textContent=meters;frameUI.line.style.opacity=0;
  if(floorChanged){document.body.dataset.floor=String(floor);frameUI.captionName.textContent=names[floor];frameUI.nav.forEach((b,i)=>{b.classList.toggle('active',i===floor);if(i===floor)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});}
 }
-if(!heroReady){const entryProgress=clamp((smoothProgress-.18)/.64);frameUI.vessel.style.transform=`translate3d(${reduced?0:easedCursorX*-8+Math.sin(motionTime*.13)*2}px,${reduced?0:easedCursorY*-5-entryProgress*30+Math.cos(motionTime*.11)*2}px,0) scale(${1.01+entryProgress*.8})`;}
+
 updateCarouselMotion(time,dt);
 if(view&&!modalOpen&&!reduced)view.samplePerformance?.(elapsed,Math.abs(scrollVelocity)<.02&&!drag.down);
 if(!modalOpen){if(!drag.down){drag.velocity*=Math.exp(-dt*4);drag.rotation+=drag.velocity*dt;}if(view)view.update(depth,motionTime,dt);}else if(view)view.update(depth,motionTime,dt);
