@@ -167,3 +167,26 @@ dialog h2,.portfolio-detail-meta{overflow-wrap:anywhere}
  .floor:not(.hero):not(.gallery-floor){top:100px;bottom:65px;max-height:calc(100dvh - 165px);overflow-y:auto;overscroll-behavior-y:auto;transform:none;padding-right:12px}
  #depth-nav{gap:3px}#depth-nav button{min-height:24px}
 }
+
+/* Ambient motion is composited behind the live sculpture: no extra render pass. */
+#hero-atmosphere{position:absolute;inset:0;overflow:hidden;pointer-events:none;contain:strict}
+#hero-atmosphere[hidden]{display:none}
+#hero-atmosphere>div{position:absolute;pointer-events:none;animation-play-state:paused}
+.hero-atmosphere-active #hero-atmosphere>div{animation-play-state:running}
+.hero-light-shaft{left:24%;top:-12%;width:76%;height:110%;transform-origin:50% 0;background:conic-gradient(from 155deg at 50% 0%,transparent 0deg,#bbddf708 8deg,#daefff30 25deg,#b7d6ee09 42deg,transparent 50deg);mask-image:linear-gradient(#000 0%,#000c 60%,transparent 96%);animation:gallery-light-drift 18s ease-in-out infinite alternate;opacity:.65}
+.hero-floor-glow{left:40%;bottom:4%;width:41%;height:13%;background:radial-gradient(ellipse,#accfe838,transparent 68%);animation:gallery-floor-shimmer 14s ease-in-out infinite alternate;opacity:.55}
+.hero-mist{left:-22%;width:145%;height:35%;bottom:-7%;background:radial-gradient(ellipse at 25% 62%,#94b7cc29 0%,transparent 38%),radial-gradient(ellipse at 60% 45%,#b5cdd72b 0%,transparent 32%),radial-gradient(ellipse at 83% 67%,#7fabc632 0%,transparent 36%);transform-origin:center;opacity:.65}
+.hero-mist-far{bottom:4%;height:28%;animation:gallery-mist-far 27s ease-in-out infinite alternate}
+.hero-mist-near{background:radial-gradient(ellipse at 28% 60%,#b5c8d332,transparent 32%),radial-gradient(ellipse at 66% 70%,#b3cdd536,transparent 43%),radial-gradient(ellipse at 85% 48%,#789eaf22,transparent 28%);animation:gallery-mist-near 21s ease-in-out infinite alternate}
+.hero-air-dust{left:31%;top:9%;width:51%;height:79%;opacity:.28;background-image:radial-gradient(circle at 21% 30%,#d8ecffb3 0 .7px,transparent 1.5px),radial-gradient(circle at 72% 67%,#c6e0ee91 0 .6px,transparent 1.3px),radial-gradient(circle at 51% 46%,#d5edff70 0 .6px,transparent 1.4px);background-size:173px 197px,241px 223px,317px 293px;mask-image:radial-gradient(ellipse at 52% 32%,#000,transparent 68%);animation:gallery-dust-drift 24s ease-in-out infinite alternate}
+@keyframes gallery-light-drift{0%{transform:rotate(-5deg) scaleX(.94);opacity:.42}50%{opacity:.75}100%{transform:rotate(5deg) scaleX(1.06);opacity:.57}}
+@keyframes gallery-floor-shimmer{from{transform:translateX(-4%) scaleX(.92);opacity:.35}to{transform:translateX(5%) scaleX(1.1);opacity:.75}}
+@keyframes gallery-mist-far{from{transform:translate3d(-3%,1%,0) scale(1.04);opacity:.43}to{transform:translate3d(4%,-5%,0) scale(1.1);opacity:.73}}
+@keyframes gallery-mist-near{from{transform:translate3d(4%,4%,0) scaleX(1.06);opacity:.72}to{transform:translate3d(-4%,-3%,0) scaleX(.97);opacity:.48}}
+@keyframes gallery-dust-drift{from{transform:translate3d(-9px,13px,0);opacity:.2}to{transform:translate3d(16px,-26px,0);opacity:.38}}
+.adaptive-low .hero-mist-near,.adaptive-low .hero-air-dust{display:none}
+@media(max-width:600px){.hero-light-shaft{left:0;width:110%;opacity:.45}.hero-mist{height:27%}.hero-mist-far{bottom:10%;height:22%}.hero-air-dust{left:19%;width:68%;background-size:211px 241px,293px 269px,347px 317px}.hero-floor-glow{left:22%;width:65%}}
+.reduced #hero-atmosphere>div{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){#hero-atmosphere>div{animation-play-state:paused!important}}
+/* Start each layer mid-cycle so the room feels alive immediately. */
+.hero-light-shaft{animation-delay:-7s}.hero-floor-glow{animation-delay:-4s}.hero-mist-far{animation-delay:-11s}.hero-mist-near{animation-delay:-5s}.hero-air-dust{animation-delay:-13s}

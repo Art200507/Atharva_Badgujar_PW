@@ -87,7 +87,11 @@ function advanceJourney(target,dt){
  if(Math.sign(step)===Math.sign(error)&&Math.abs(step)>=Math.abs(error)){smoothProgress=target;scrollVelocity=0;}
  else smoothProgress=clamp(smoothProgress+step,0,LAST_FLOOR);
 }
-let heroTitleElapsed=0;
+let heroTitleElapsed=0,atmosphereRunning=false;
+function setAtmosphereMotion(running){
+ if(running===atmosphereRunning)return;
+ atmosphereRunning=running;document.body.classList.toggle('hero-atmosphere-active',running);
+}
 function updateHeroTitles(dt){
  if(currentFloor!==0||modalOpen||document.hidden)return;
  if(!reduced)heroTitleElapsed+=dt;
@@ -97,7 +101,7 @@ function updateHeroTitles(dt){
  else if(cycle){const previous=(cycle-1)%4,p=cinematicEase(clamp(phase/.65));offset=previous+p;if(offset===4)offset=0;}
  $('.title-strip').style.transform=`translate3d(${-offset*100}%,0,0)`;
 }
-document.addEventListener('visibilitychange',()=>{lastTime=0;if(document.hidden)navigation=null;});
+document.addEventListener('visibilitychange',()=>{lastTime=0;if(document.hidden){navigation=null;setAtmosphereMotion(false);}});
 
 function setMotion(){if(reduced){navigation=null;scrollVelocity=0;heroTitleElapsed=Math.floor(heroTitleElapsed/3)*3+.65;}document.body.classList.toggle('reduced',reduced);$('#motion-toggle').setAttribute('aria-pressed',String(reduced));$('#motion-toggle span').textContent=reduced?'OFF':'ON';}
 setMotion();
@@ -147,7 +151,7 @@ function passageEase(t){if(t<.2){const x=t/.2;return .25*(x*x*x-.5*x*x*x*x);}if(
 function entranceState(depth){return {gallery:1-cinematicEase(clamp((depth-.02)/.32)),shaft:cinematicEase(clamp((depth-.34)/.36))};}
 function progressState(p){const base=Math.min(LAST_FLOOR-1,Math.floor(p)),frac=p-base;return p>=LAST_FLOOR?LAST_FLOOR:base+passageEase(clamp((frac-.28)/.72));}
 const floorElements=$$('.floor');
-const frameUI={world:$('#world'),backdrop:$('#hero-backdrop'),chamber:$('#chamber-art'),progress:$('.journey-progress i'),caption:$('#chamber-caption'),captionName:$('#chamber-caption b'),veil:$('#descent-veil'),nav:$$('#depth-nav button'),depth:$('#depth-number'),line:$('#transition-line')};
+const frameUI={world:$('#world'),backdrop:$('#hero-backdrop'),atmosphere:$('#hero-atmosphere'),chamber:$('#chamber-art'),progress:$('.journey-progress i'),caption:$('#chamber-caption'),captionName:$('#chamber-caption b'),veil:$('#descent-veil'),nav:$$('#depth-nav button'),depth:$('#depth-number'),line:$('#transition-line')};
 let paintedDepth=NaN,paintedFloor=-1,paintedReady=false,paintedReduced=false,lastRevealDepth=NaN,lastRevealFloor=-1,lastRevealReduced=false,lastReveal=1;
 function revealFloor(depth,floor){
  if(depth===lastRevealDepth&&floor===lastRevealFloor&&reduced===lastRevealReduced)return lastReveal;
@@ -173,6 +177,7 @@ function frame(time){
  else if(!modalOpen)advanceJourney(target,dt);
  if(navigation&&!modalOpen){window.scrollTo({top:floorScroll(smoothProgress),behavior:'instant'});if(Math.abs(smoothProgress-navigation.to)<.0001){smoothProgress=navigation.to;targetProgress=navigation.to;navigation=null;}}
  const depth=reduced?Math.round(target):progressState(smoothProgress);
+ setAtmosphereMotion(depth<.34&&!modalOpen&&!reduced);
  const base=Math.min(Math.floor(depth),LAST_FLOOR-1),phase=depth>=LAST_FLOOR?1:depth-base;
  const floor=reduced?Math.round(depth):clamp(base+(phase>=.55?1:0),0,LAST_FLOOR);
  const difference=Math.abs(depth-Math.round(depth));
@@ -182,7 +187,7 @@ if(depth!==paintedDepth||floor!==paintedFloor||heroReady!==paintedReady||reduced
  const floorChanged=floor!==paintedFloor;paintedDepth=depth;paintedFloor=floor;paintedReady=heroReady;paintedReduced=reduced;
  const artOpacity=entranceState(depth).gallery;
  document.documentElement.style.setProperty('--chamber-opacity',String(.65*(1-cinematicEase(clamp(depth/.32)))+(innerWidth<601?.09:.12)*cinematicEase(clamp((depth-.75)/.25))));
- frameUI.world.style.opacity=view?(heroReady?1:1-artOpacity):0;frameUI.backdrop.style.opacity=artOpacity;
+ frameUI.world.style.opacity=view?(heroReady?1:1-artOpacity):0;frameUI.backdrop.style.opacity=artOpacity;frameUI.atmosphere.style.opacity=artOpacity;frameUI.atmosphere.hidden=artOpacity<=0;
  frameUI.chamber.style.transform=`translate3d(0,${reduced?0:Math.sin(depth*Math.PI)*20}px,0) scale(${1.02+(reduced?0:Math.sin(depth*Math.PI)*.035)})`;
  frameUI.progress.style.transform=`scaleX(${depth/LAST_FLOOR})`;frameUI.caption.style.opacity=floor>0&&floor<LAST_FLOOR?opacity:0;
  frameUI.veil.style.opacity=reduced?'0':String(Math.pow(Math.sin(phase*Math.PI),4)*.12);
